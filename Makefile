@@ -5,7 +5,8 @@ RM		= @rm -f
 NAME	= cub3D
 HEADER = cub3d.h
 
-SRC		= 
+SRC		= main.c parsing/arg_validation.c parsing/parsing.c parsing/arg_validation.c \
+		
 
 OBJ		= $(SRC:.c=.o)
 

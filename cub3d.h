@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:32:42 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/14 15:48:22 by motelti          ###   ########.fr       */
+/*   Updated: 2025/07/14 18:49:08 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,24 @@
 # include <time.h>
 # include <string.h>
 # include <errno.h>
-// parsing
+
+// ---------------------------------------------------------> parsing
 void	extension_err(void);
-int	validate_file_extension(char *name);
+int		validate_file_extension(char *name);
+
+// ---------------------------------------------------------> t_cube
+typedef struct s_cube
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	//f
+	//c
+	char	**map;
+	int		x_max;
+	int		y_max;
+} t_cube;
+
 
 #endif
