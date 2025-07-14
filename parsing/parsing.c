@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:37:40 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/14 19:45:48 by ataai            ###   ########.fr       */
+/*   Updated: 2025/07/14 23:19:36 by ataai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 
 t_cube	*cube_parsing(int argc, char **argv)
 {
-	if (argc != 2 || validate_file_extension(argv[1]))
+	int		fd;
+	t_cube	*cube;
+
+	if (argc != 2)
+	{
+		ft_putstr_fd("usage: ./cub3D file.cub\n", 2);
 		return (NULL);
-	return ((t_cube *)argv);
+	}
+	if (validate_file_extension(argv[1]))
+		return (NULL);
+	fd = open(argv[1], O_RDONLY, 0444);
+	if (fd == -1)
+		return (cant_open_err(), NULL);
+	cube = validate_file(fd);
+	return (cube);
 }

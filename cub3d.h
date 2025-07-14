@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:32:42 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/14 19:39:59 by ataai            ###   ########.fr       */
+/*   Updated: 2025/07/14 23:09:55 by ataai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <string.h>
 # include <errno.h>
 # include "libft/libft.h"
+#include <fcntl.h>
 
 // ---------------------------------------------------------> t_cube
 typedef struct s_cube
@@ -39,6 +40,7 @@ typedef struct s_cube
 void	extension_err(void);
 int		validate_file_extension(char *name);
 t_cube	*cube_parsing(int argc, char **argv);
+void	cant_open_err(void);
 
 
 
