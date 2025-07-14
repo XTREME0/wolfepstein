@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:36:53 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/14 18:37:07 by motelti          ###   ########.fr       */
+/*   Updated: 2025/07/14 19:44:50 by ataai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ int	main(int argc, char **argv)
 	cube = cube_parsing(argc, argv);
 	if (cube == NULL)
 		return (1);
+	return (0);
 }

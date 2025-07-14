@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:37:28 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/14 18:37:30 by motelti          ###   ########.fr       */
+/*   Updated: 2025/07/14 19:43:36 by ataai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	validate_file_extension(char *name)
 		return (1);
 	while (name[i])
 		i++;
-	if (i <= 5)
+	if (i <= 4)
 		return (extension_err(), 1);
-	i = i - 5;
-	if (ft_strcmp(name + i, ".cube") != 0)
+	i = i - 4;
+	if (ft_strcmp(name + i, ".cub") != 0)
 		return (extension_err(), 1);
 	return (0);
 }
