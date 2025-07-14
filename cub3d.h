@@ -19,6 +19,8 @@
 # include <time.h>
 # include <string.h>
 # include <errno.h>
-
+// parsing
+void	extension_err(void);
+int	validate_file_extension(char *name);
 
 #endif
