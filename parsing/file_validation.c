@@ -55,6 +55,7 @@ int	set_no_so(t_cube *cube, char *line, int *n)
 		cube->no = get_rest_line(line);
 		if (cube->no == NULL)
 			return (1);
+		printf("NO -> %s\n", cube->no);//dlt
 		*n = *n + 1;
 		return (0);
 	}
@@ -63,6 +64,7 @@ int	set_no_so(t_cube *cube, char *line, int *n)
 		cube->so = get_rest_line(line);
 		if (cube->so == NULL)
 			return (1);
+		printf("SO -> %s\n", cube->so);//dlt
 		*n = *n + 1;
 		return (0);
 	}
@@ -76,6 +78,7 @@ int	set_we_ea(t_cube *cube, char *line, int *n)
 		cube->we = get_rest_line(line);
 		if (cube->we == NULL)
 			return (1);
+		printf("WE -> %s\n", cube->we);//dlt
 		*n = *n + 1;
 		return (0);
 	}
@@ -84,6 +87,7 @@ int	set_we_ea(t_cube *cube, char *line, int *n)
 		cube->ea = get_rest_line(line);
 		if (cube->ea == NULL)
 			return (1);
+		printf("EA -> %s\n", cube->ea);//dlt
 		*n = *n + 1;
 		return (0);
 	}
@@ -142,6 +146,7 @@ char	*get_rest_line(char *line)
 	rest = sections[1];
 	free(sections[0]);
 	free(sections);
+	printf("that section is %s\n", rest);
 	tmp = open(rest, O_RDONLY, 0444);
 	if (tmp == -1)
 	{
