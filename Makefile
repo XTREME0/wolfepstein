@@ -5,7 +5,7 @@ RM		= @rm -f
 NAME	= cub3D
 HEADER = cub3d.h
 
-SRC		= main.c parsing/parsing.c parsing/file_validation.c
+SRC		= main.c parsing/parsing.c parsing/file_validation.c get_next_line/*.c
 		
 
 OBJ		= $(SRC:.c=.o)
@@ -16,6 +16,9 @@ all: $(NAME) clean
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@ -MMD
 
+
+get_next_line/%.o: get_next_line/%.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@ -MMD
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)

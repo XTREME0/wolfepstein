@@ -20,6 +20,7 @@
 # include <string.h>
 # include <errno.h>
 # include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
 #include <fcntl.h>
 
 // ---------------------------------------------------------> t_cube
@@ -29,8 +30,8 @@ typedef struct s_cube
 	char	*so;
 	char	*we;
 	char	*ea;
-	//f
-	//c
+	long long	f;
+	long long	c;
 	char	**map;
 	int		x_max;
 	int		y_max;
@@ -39,9 +40,16 @@ typedef struct s_cube
 // ---------------------------------------------------------> parsing
 void	extension_err(void);
 int		validate_file_extension(char *name);
+t_cube	*validate_file(int fd);
 t_cube	*cube_parsing(int argc, char **argv);
 void	cant_open_err(void);
-
-
-
+int	param_check(t_cube *cube, int fd);
+int	set_param(t_cube *cube, char *line, int *n);
+int	is_all_space(char *line);
+int	set_f_c(char *line, int *n);
+int	set_we_ea(t_cube *cube, char *line, int *n);
+int	set_no_so(t_cube *cube, char *line, int *n);
+void	init_cube(t_cube *cube);
+char	*get_rest_line(char *line);
+void	free_tab(char **tab);
 #endif
