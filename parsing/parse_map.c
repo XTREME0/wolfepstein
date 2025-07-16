@@ -1,3 +1,5 @@
+#include "../cub3d.h"
+
 int	tab_len(char **tab)
 {
 	int	i;
@@ -21,7 +23,6 @@ int	tab_join(t_cube *cube, char *line)
 		return (-1);
 	if (cube->map == NULL)
 	{
-		free_tab(cube->map);
 		cube->map = new_map;
 		cube->map[0] = line;
 		cube->map[1] = NULL;
@@ -54,7 +55,7 @@ int	check_map_line(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (banned_char(line))
+		if (banned_char(line[i]))
 			return (1);
 		i++;
 	}
@@ -71,13 +72,12 @@ int	parse_map(t_cube *cube, int fd)
 	{
 		line = rm_newline(get_next_line(fd));
 		if (line == NULL)
-		{
-			free(line);
 			return (1);
-		}
+		printf("%s\n", line);//dlt
 		if (check_map_line(line))
-			return (1);
-		tab_join(cube->map, line);
+			return (free(line), 1);
+		if (tab_join(cube, line))
+			return (free(line), 1);
 	}
 	return (0);
 }

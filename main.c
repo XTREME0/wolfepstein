@@ -25,5 +25,13 @@ int	main(int argc, char **argv)
 	printf("------------> ea: %s\n", cube->ea);
 	printf("------------> f: %lld\n", cube->f);
 	printf("------------> c: %lld\n", cube->c);
+	int	i = 0;
+	if (cube->map == NULL)
+		return (1);
+	while (cube->map[i])
+	{
+		printf("%s\n", cube->map[i]);
+		i++;
+	}
 	return (0);
 }

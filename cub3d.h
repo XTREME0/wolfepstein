@@ -55,5 +55,6 @@ void	free_tab(char **tab);
 double	get_color(char *line);
 double	convert_rgb(char **section);
 char	*rm_newline(char *str);
+int	parse_map(t_cube *cube, int fd);
 
 #endif

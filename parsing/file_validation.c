@@ -300,6 +300,8 @@ t_cube	*validate_file(int fd)
 	init_cube(cube);
 	if (param_check(cube, fd))
 		return (NULL); //must close fd and free cube
+	if (parse_map(cube, fd))
+		return (NULL); //must close fd and free cube
 	//map_check(cube, fd);
 	return (cube);
 }
