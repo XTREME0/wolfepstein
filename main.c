@@ -19,5 +19,11 @@ int	main(int argc, char **argv)
 	cube = cube_parsing(argc, argv);
 	if (cube == NULL)
 		return (1);
+	printf("------------> no: %s\n", cube->no);
+	printf("------------> so: %s\n", cube->so);
+	printf("------------> we: %s\n", cube->we);
+	printf("------------> ea: %s\n", cube->ea);
+	printf("------------> f: %lld\n", cube->f);
+	printf("------------> c: %lld\n", cube->c);
 	return (0);
 }

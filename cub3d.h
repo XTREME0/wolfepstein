@@ -46,10 +46,14 @@ void	cant_open_err(void);
 int	param_check(t_cube *cube, int fd);
 int	set_param(t_cube *cube, char *line, int *n);
 int	is_all_space(char *line);
-int	set_f_c(char *line, int *n);
+int	set_f_c(t_cube *cube, char *line, int *n);
 int	set_we_ea(t_cube *cube, char *line, int *n);
 int	set_no_so(t_cube *cube, char *line, int *n);
 void	init_cube(t_cube *cube);
-char	*get_rest_line(char *line);
+char	*get_rest_line(char *line, int flag);
 void	free_tab(char **tab);
+double	get_color(char *line);
+double	convert_rgb(char **section);
+char	*rm_newline(char *str);
+
 #endif

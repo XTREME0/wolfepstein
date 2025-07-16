@@ -45,6 +45,8 @@ void	init_cube(t_cube *cube)
 	cube->so = NULL;
 	cube->we = NULL;
 	cube->ea = NULL;
+	cube->c = -1;
+	cube->f = -1;
 	cube->map = NULL;
 }
 
@@ -52,20 +54,22 @@ int	set_no_so(t_cube *cube, char *line, int *n)
 {
 	if (!ft_strncmp(line, "NO ", 3))
 	{
-		cube->no = get_rest_line(line);
+		if (cube->no != NULL)
+			return (1);
+		cube->no = get_rest_line(line, 1);
 		if (cube->no == NULL)
 			return (1);
-		printf("NO -> %s\n", cube->no);//dlt
-		*n = *n + 1;
+		*n = *n - 1;
 		return (0);
 	}
 	if (!ft_strncmp(line, "SO ", 3))
 	{
-		cube->so = get_rest_line(line);
+		if (cube->so != NULL)
+			return (1);
+		cube->so = get_rest_line(line, 1);
 		if (cube->so == NULL)
 			return (1);
-		printf("SO -> %s\n", cube->so);//dlt
-		*n = *n + 1;
+		*n = *n - 1;
 		return (0);
 	}
 	return (2);
@@ -75,31 +79,50 @@ int	set_we_ea(t_cube *cube, char *line, int *n)
 {
 	if (!ft_strncmp(line, "WE ", 3))
 	{
-		cube->we = get_rest_line(line);
+		if (cube->we != NULL)
+			return (1);
+		cube->we = get_rest_line(line, 1);
 		if (cube->we == NULL)
 			return (1);
-		printf("WE -> %s\n", cube->we);//dlt
-		*n = *n + 1;
+		*n = *n - 1;
 		return (0);
 	}
 	if (!ft_strncmp(line, "EA ", 3))
 	{
-		cube->ea = get_rest_line(line);
+		if (cube->ea != NULL)
+			return (1);
+		cube->ea = get_rest_line(line, 1);
 		if (cube->ea == NULL)
 			return (1);
-		printf("EA -> %s\n", cube->ea);//dlt
-		*n = *n + 1;
+		*n = *n - 1;
 		return (0);
 	}
 	return (2);
 }
 
-int	set_f_c(char *line, int *n)
+int	set_f_c(t_cube *cube, char *line, int *n)
 {
-	//tmp bs:
-	if (line == NULL && *n == 0)
-		return (9999);
-	return (1);
+	if (!ft_strncmp(line, "F ", 2))
+	{
+		if (cube->f != -1)
+			return (1);
+		cube->f = get_color(line);
+		if (cube->f == -1)
+			return (1);
+		*n = *n - 1;
+		return (0);
+	}
+	if (!ft_strncmp(line, "C ", 2))
+	{
+		if (cube->c != -1)
+			return (1);
+		cube->c = get_color(line);
+		if (cube->c == -1)
+			return (1);
+		*n = *n - 1;
+		return (0);
+	}
+	return (2);
 }
 
 int	is_all_space(char *line)
@@ -109,7 +132,7 @@ int	is_all_space(char *line)
 	i = 0;
 	while(line[i])
 	{
-		if (line[i] != ' ' && line[i] != '\n')
+		if (line[i] != ' ')
 			return (0);
 		i++;
 	}
@@ -131,7 +154,70 @@ void	free_tab(char **tab)
 	free(tab);
 }
 
-char	*get_rest_line(char *line)
+char	*rm_newline(char *str)
+{
+	int	i;
+
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			str[i] = '\0';
+		i++;
+	}
+	return(str);
+}
+
+double	convert_rgb(char **section)
+{
+	int		i;
+	int		j;
+	int r;
+	int g;
+	int b;
+
+	i = 0;
+	while (section[i])
+	{
+		j = 0;
+		if (ft_strlen(section[i]) > 3 || (ft_strlen(section[i]) == 3 && ft_strcmp(section[i], "255") > 0))
+			return (free_tab(section), -1);
+		while (section[i][j])
+		{
+			if (!ft_isdigit(section[i][j]))
+				return (free_tab(section), -1);
+			j++;
+		}
+		i++;
+	}
+	r = ft_atoi(section[0]);
+	g = ft_atoi(section[1]);
+	b = ft_atoi(section[2]);
+	return (free_tab(section), (double)((r << 16) | (g << 8) | b));
+}
+
+double	get_color(char *line)
+{
+	char	*l;
+	char	**sections;
+
+	l = get_rest_line(line, 0);
+	if (l == NULL)
+		return (-1);
+	sections = ft_split(l, ',');
+	if (sections == NULL)
+		return (-1);
+	if (!sections[0] || !sections[1] || !sections[2] || sections[3])
+	{
+		free_tab(sections);
+		return (-1);
+	}
+	return (convert_rgb(sections));
+}
+
+char	*get_rest_line(char *line, int flag)
 {
 	char **sections;
 	char	*rest;
@@ -146,29 +232,37 @@ char	*get_rest_line(char *line)
 	rest = sections[1];
 	free(sections[0]);
 	free(sections);
-	printf("that section is %s\n", rest);
-	tmp = open(rest, O_RDONLY, 0444);
-	if (tmp == -1)
+	if (flag)
 	{
-		free(rest);
-		ft_putstr_fd("error: can't find texture\n", 2);
-		return (NULL);
+		tmp = open(rest, O_RDONLY, 0444);
+		if (tmp == -1)
+		{
+			free(rest);
+			ft_putstr_fd("error: can't find texture\n", 2);
+			return (NULL);
+		}
+		close(tmp);
 	}
-	close(tmp);
 	return (rest);
 }
 
 int	set_param(t_cube *cube, char *line, int *n)
 {
-	if ((!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3))
-			&& set_no_so(cube, line, n) == 1)
-		return (1);
-	else if ((!ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
-			&& set_we_ea(cube, line, n) == 1)
-		return (1);
-	else if ((!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
-			&& set_f_c(line, n) == 1)
-		return (1);
+	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3))
+	{
+			if (set_no_so(cube, line, n) == 1)
+				return (1);
+	}
+	else if (!ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
+	{
+			if (set_we_ea(cube, line, n) == 1)
+				return (1);
+	}
+	else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
+	{
+			if (set_f_c(cube, line, n) == 1)
+				return (1);
+	}
 	else if (is_all_space(line))
 		return (0);
 	else
@@ -181,15 +275,16 @@ int	param_check(t_cube *cube, int fd)
 	int		params;
 	char	*line;
 
-	params = 4;
+	params = 6;
 	while (params)
 	{
-		line = get_next_line(fd);
+		line = rm_newline(get_next_line(fd));
 		if (line == NULL || set_param(cube, line, &params))
 		{
 			free(line);
 			return (1);
 		}
+		free(line);
 	}
 	return (0);
 }
