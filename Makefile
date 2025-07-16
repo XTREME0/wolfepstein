@@ -16,6 +16,8 @@ all: $(NAME) clean
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@ -MMD
 
+bruh:
+	cc libft/libft.a main.c get_next_line/*.c parsing/*.c -o cub3D
 
 get_next_line/%.o: get_next_line/%.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@ -MMD
