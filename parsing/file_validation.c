@@ -302,6 +302,11 @@ t_cube	*validate_file(int fd)
 		return (NULL); //must close fd and free cube
 	if (parse_map(cube, fd))
 		return (NULL); //must close fd and free cube
-	//map_check(cube, fd);
+	close(fd);
+	if (map_check(cube))
+	{
+		ft_putstr_fd("error: Invalid map\n", 2);
+		return (NULL); //must free cube etc
+	}
 	return (cube);
 }

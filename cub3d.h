@@ -56,5 +56,14 @@ double	get_color(char *line);
 double	convert_rgb(char **section);
 char	*rm_newline(char *str);
 int	parse_map(t_cube *cube, int fd);
-
+int	map_check(t_cube *cube);
+int	mid_line(t_cube *cube, int y);
+int	first_last_line(t_cube *cube);
+int	is_player(char c);
+int	check_surroundings(t_cube *cube, char *line, int x, int y);
+int	is_valid_stop(char c);
+int	check_map_line(char *line);
+int	banned_char(char c);
+int	tab_join(t_cube *cube, char *line);
+int	tab_len(char **tab);
 #endif
