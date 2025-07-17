@@ -36,7 +36,7 @@ int	tab_join(t_cube *cube, char *line)
 	}
 	new_map[i] = line;
 	new_map[i + 1] = NULL;
-	free_tab(cube->map);
+	free(cube->map);
 	cube->map = new_map;
 	return (0);
 }
@@ -72,8 +72,7 @@ int	parse_map(t_cube *cube, int fd)
 	{
 		line = rm_newline(get_next_line(fd));
 		if (line == NULL)
-			return (1);
-		printf("%s\n", line);//dlt
+			break ;
 		if (check_map_line(line))
 			return (free(line), 1);
 		if (tab_join(cube, line))
