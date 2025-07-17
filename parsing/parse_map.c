@@ -6,6 +6,7 @@ int	tab_len(char **tab)
 
 	if (tab == NULL)
 		return (0);
+	i = 0;
 	while (tab[i])
 		i++;
 	return (i);
@@ -43,7 +44,8 @@ int	tab_join(t_cube *cube, char *line)
 
 int	banned_char(char c)
 {
-	if (c != ' ' && c != '1' && c != '0' && c != 'N' && c != 'S' && c != 'E' && c != 'W')
+	if (c != ' ' && c != '1' && c != '0' && c != 'N'
+			&& c != 'S' && c != 'E' && c != 'W')
 		return (1);
 	return (0);
 }
@@ -64,8 +66,6 @@ int	check_map_line(char *line)
 
 int	parse_map(t_cube *cube, int fd)
 {
-	int	max_x;
-	int	max_y;
 	char	*line;
 
 	while (1)
@@ -102,9 +102,9 @@ int	check_surroundings(t_cube *cube, char *line, int x, int y)
 		return (1);
 	if (x == len - 1)
 		return (1);
-	if (ft_strlen(cube->map[y - 1]) - 1 < x || !is_valid_stop(cube->map[y - 1][x]))
+	if ((int)ft_strlen(cube->map[y - 1]) - 1 < x || !is_valid_stop(cube->map[y - 1][x]))
 		return (1);
-	if (ft_strlen(cube->map[y + 1]) - 1 < x || !is_valid_stop(cube->map[y + 1][x]))
+	if ((int)ft_strlen(cube->map[y + 1]) - 1 < x || !is_valid_stop(cube->map[y + 1][x]))
 		return (1);
 	if (!is_valid_stop(line[x - 1]) || !is_valid_stop(line[x + 1]))
 		return (1);

@@ -289,9 +289,18 @@ int	param_check(t_cube *cube, int fd)
 	return (0);
 }
 
+void	free_cube(t_cube *cube)
+{
+	free(cube->no);
+	free(cube->so);
+	free(cube->we);
+	free(cube->ea);
+	free_tab(cube->map);
+	free(cube);
+}
+
 t_cube	*validate_file(int fd)
 {
-	//close fd on error
 	t_cube	*cube;
 
 	cube = malloc(sizeof(t_cube));
@@ -299,14 +308,17 @@ t_cube	*validate_file(int fd)
 		return (NULL);
 	init_cube(cube);
 	if (param_check(cube, fd))
-		return (NULL); //must close fd and free cube
+		return (free_cube(cube), close(fd), NULL);
 	if (parse_map(cube, fd))
-		return (NULL); //must close fd and free cube
+	{
+		ft_putstr_fd("error: Invalid map\n", 2);
+		return (free_cube(cube), close(fd), NULL);
+	}
 	close(fd);
 	if (map_check(cube))
 	{
 		ft_putstr_fd("error: Invalid map\n", 2);
-		return (NULL); //must free cube etc
+		return (free_cube(cube), NULL);
 	}
 	return (cube);
 }

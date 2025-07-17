@@ -66,4 +66,6 @@ int	check_map_line(char *line);
 int	banned_char(char c);
 int	tab_join(t_cube *cube, char *line);
 int	tab_len(char **tab);
+void	free_tab(char **tab);
+void	free_cube(t_cube *cube);
 #endif
