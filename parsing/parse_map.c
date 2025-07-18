@@ -64,10 +64,26 @@ int	check_map_line(char *line)
 	return (0);
 }
 
+int	player_in_line(char *line, int *player)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (is_player(line[i]))
+			*player = *player + 1;
+		i++;
+	}
+	return (*player);
+}
+
 int	parse_map(t_cube *cube, int fd)
 {
 	char	*line;
+	int		player;
 
+	player = 0;
 	while (1)
 	{
 		line = rm_newline(get_next_line(fd));
@@ -78,17 +94,21 @@ int	parse_map(t_cube *cube, int fd)
 			free(line);
 			continue ;
 		}
+		if (player_in_line(line, &player) > 1)
+				return (free(line), 1);
 		if (check_map_line(line))
 			return (free(line), 1);
 		if (tab_join(cube, line))
 			return (free(line), 1);
 	}
+	if (player == 0)
+		return (1);
 	return (0);
 }
 
 int	is_valid_stop(char c)
 {
-	if (c == '0' || c == '1' || c == 'N' || c == 'W' || c == 'E' || c == 'S')
+	if (c == '0' || c == '1' || is_player(c))
 		return (1);
 	return (0);
 }
