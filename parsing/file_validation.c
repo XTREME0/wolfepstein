@@ -6,11 +6,11 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:37:28 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/15 00:20:00 by ataai            ###   ########.fr       */
+/*   Updated: 2025/07/18 19:13:47 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3D.h"
 
 void	extension_err(void)
 {
@@ -107,6 +107,7 @@ int	set_f_c(t_cube *cube, char *line, int *n)
 		if (cube->f != -1)
 			return (1);
 		cube->f = get_color(line);
+		printf("heeeereeee =====> %u\n", cube->f);
 		if (cube->f == -1)
 			return (1);
 		*n = *n - 1;
@@ -170,7 +171,7 @@ char	*rm_newline(char *str)
 	return(str);
 }
 
-double	convert_rgb(char **section)
+long	convert_rgb(char **section)
 {
 	int		i;
 	int		j;
@@ -195,10 +196,10 @@ double	convert_rgb(char **section)
 	r = ft_atoi(section[0]);
 	g = ft_atoi(section[1]);
 	b = ft_atoi(section[2]);
-	return (free_tab(section), (double)((r << 16) | (g << 8) | b));
+	return (free_tab(section), ((r << 16) | (g << 8) | b));
 }
 
-double	get_color(char *line)
+long	get_color(char *line)
 {
 	char	*l;
 	char	**sections;

@@ -6,11 +6,11 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 18:37:40 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/14 23:19:36 by ataai            ###   ########.fr       */
+/*   Updated: 2025/07/18 17:07:33 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3D.h"
 
 t_cube	*cube_parsing(int argc, char **argv)
 {
