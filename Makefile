@@ -20,7 +20,7 @@ HEADER = cub.h
 all: $(NAME)
 
 bruh:
-	cc $(CFLAGS) $(LFLAGS) libft/libft.a get_next_line/*.c parsing/*.c srcs/*.c -g -o cub3D 
+	cc $(CFLAGS) $(LFLAGS) libft/libft.a get_next_line/*.c parsing/*.c srcs/*.c main.c -g -o cub3D 
 
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@ -MMD
