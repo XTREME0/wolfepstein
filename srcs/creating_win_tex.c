@@ -21,10 +21,14 @@ void	textures(t_game *game)
 	width = 0;
 	height = 0;
 	dummy = 0;
-	game->no_img = mlx_xpm_file_to_image(game->mlx, game->no_texture, &width, &height);
-	game->so_img = mlx_xpm_file_to_image(game->mlx, game->so_texture, &width, &height);
-	game->we_img = mlx_xpm_file_to_image(game->mlx, game->we_texture, &width, &height);
-	game->ea_img = mlx_xpm_file_to_image(game->mlx, game->ea_texture, &width, &height);
+	game->no_img = mlx_xpm_file_to_image(game->mlx, \
+			game->no_texture, &width, &height);
+	game->so_img = mlx_xpm_file_to_image(game->mlx, \
+			game->so_texture, &width, &height);
+	game->we_img = mlx_xpm_file_to_image(game->mlx, \
+			game->we_texture, &width, &height);
+	game->ea_img = mlx_xpm_file_to_image(game->mlx, \
+			game->ea_texture, &width, &height);
 	game->tex_width = width;
 	game->tex_height = height;
 	game->no_addr = mlx_get_data_addr(game->no_img, &width, &height, &dummy);
@@ -65,6 +69,7 @@ int	create_window_and_image(t_game *game)
 		return (handle_exit1(game), 1);
 	game->img.img = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	game->img.addr = mlx_get_data_addr(game->img.img,
-		&game->img.bits_per_pixel, &game->img.line_length, &game->img.endian);
+			&game->img.bits_per_pixel, \
+			&game->img.line_length, &game->img.endian);
 	return (0);
 }

@@ -54,14 +54,14 @@ static int	copy_map(t_game *game, t_cube *cube)
 	return (0);
 }
 
-
 int	allocate_textures_map(int *i, t_game *game, t_cube *cube)
 {
 	game->no_texture = ft_strdup(cube->no);
 	game->so_texture = ft_strdup(cube->so);
 	game->we_texture = ft_strdup(cube->we);
 	game->ea_texture = ft_strdup(cube->ea);
-	if (!game->no_texture || !game->so_texture || !game->we_texture || !game->ea_texture)
+	if (!game->no_texture || !game->so_texture
+		|| !game->we_texture || !game->ea_texture)
 	{
 		free(game->no_texture);
 		free(game->so_texture);

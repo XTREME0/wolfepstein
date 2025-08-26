@@ -12,27 +12,38 @@
 
 #include "../cub3D.h"
 
+static void	fill_north(t_game *game)
+{
+	game->dir_x = 0;
+	game->dir_y = -1;
+	game->plane_x = 0.66;
+	game->plane_y = 0;
+}
+
 static void	set_player_direction(t_game *game, char dir)
 {
 	if (dir == 'N')
-	{
-		game->dir_x = 0; game->dir_y = -1;
-		game->plane_x = 0.66; game->plane_y = 0;
-	}
+		fill_north(game);
 	else if (dir == 'S')
 	{
-		game->dir_x = 0; game->dir_y = 1;
-		game->plane_x = -0.66; game->plane_y = 0;
+		game->dir_x = 0;
+		game->dir_y = 1;
+		game->plane_x = -0.66;
+		game->plane_y = 0;
 	}
 	else if (dir == 'E')
 	{
-		game->dir_x = 1; game->dir_y = 0;
-		game->plane_x = 0; game->plane_y = 0.66;
+		game->dir_x = 1;
+		game->dir_y = 0;
+		game->plane_x = 0;
+		game->plane_y = 0.66;
 	}
 	else if (dir == 'W')
 	{
-		game->dir_x = -1; game->dir_y = 0;
-		game->plane_x = 0; game->plane_y = -0.66;
+		game->dir_x = -1;
+		game->dir_y = 0;
+		game->plane_x = 0;
+		game->plane_y = -0.66;
 	}
 }
 
@@ -64,7 +75,7 @@ void	init_player(t_game *game, t_cube *cube)
 	while (cube->map[y])
 	{
 		if (find_player(game, cube, y))
-			return;
+			return ;
 		y++;
 	}
 }
