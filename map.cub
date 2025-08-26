@@ -1,10 +1,10 @@
-NO ./textures/ataai.xpm
-SO ./textures/ataai.xpm
-WE ./textures/ataai.xpm
-EA ./textures/ataai.xpm
+NO ./textures/diddy.xpm
+SO ./textures/kanye.xpm
+WE ./textures/kanye.xpm
+EA ./textures/kanye-east.xpm
 
-F 34,139,34
-C 135,206,250
+F 29,48,47
+C 4,218,219
 
 1111111111111111111111111111111111111111
 1000000000001000000000000000000000000001
