@@ -52,11 +52,15 @@ static void	handle_rotate(t_game *game, double rot_speed, int dir)
 	double	old_plane_x;
 
 	old_dir_x = game->dir_x;
-	game->dir_x = game->dir_x * cos(dir * rot_speed) - game->dir_y * sin(dir * rot_speed);
-	game->dir_y = old_dir_x * sin(dir * rot_speed) + game->dir_y * cos(dir * rot_speed);
+	game->dir_x = game->dir_x * cos(dir * rot_speed) \
+		- game->dir_y * sin(dir * rot_speed);
+	game->dir_y = old_dir_x * sin(dir * rot_speed) \
+		+ game->dir_y * cos(dir * rot_speed);
 	old_plane_x = game->plane_x;
-	game->plane_x = game->plane_x * cos(dir * rot_speed) - game->plane_y * sin(dir * rot_speed);
-	game->plane_y = old_plane_x * sin(dir * rot_speed) + game->plane_y * cos(dir * rot_speed);
+	game->plane_x = game->plane_x * cos(dir * rot_speed) \
+		- game->plane_y * sin(dir * rot_speed);
+	game->plane_y = old_plane_x * sin(dir * rot_speed) \
+		+ game->plane_y * cos(dir * rot_speed);
 }
 
 int	key_press(int keycode, void *param)

@@ -138,6 +138,8 @@ int		load_and_check_textures(t_game *game);
 int		create_window_and_image(t_game *game);
 void	handle_exit1(t_game *game);
 void	set_pixel(t_data *img, int x, int y, int color);
+void	init_render_params(t_game *game, t_ray *r, t_render_params *p);
+void	select_texture(t_game *game, t_ray *r, t_render_params *p);
 
 // =========================================> parsing
 void	extension_err(void);

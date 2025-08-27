@@ -1,7 +1,7 @@
-NO ./textures/diddy.xpm
-SO ./textures/2pac.xpm
+NO ./textures/kanye.xpm
+SO ./textures/kanye.xpm
 WE ./textures/kanye.xpm
-EA ./textures/kanye-east.xpm
+EA ./textures/kanye.xpm
 
 F 29,48,47
 C 4,218,219
