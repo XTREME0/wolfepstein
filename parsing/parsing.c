@@ -28,5 +28,7 @@ t_cube	*cube_parsing(int argc, char **argv)
 	if (fd == -1)
 		return (cant_open_err(), NULL);
 	cube = validate_file(fd);
+	if (cube == NULL)
+		ft_putstr_fd("Invalid map!\n", 2);
 	return (cube);
 }
