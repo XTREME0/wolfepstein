@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:10 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/19 13:36:49 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/28 11:59:55 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ static void	set_player_direction(t_game *game, char dir)
 	}
 }
 
-static int	find_player(t_game *game, t_cube *cube, int y)
+static int	find_player(t_game *game, int y)
 {
 	int	x;
 
 	x = 0;
-	while (cube->map[y][x])
+	while (game->map[y][x])
 	{
-		if (is_player(cube->map[y][x]))
+		if (is_player(game->map[y][x]))
 		{
 			game->player_x = x + 0.5;
 			game->player_y = y + 0.5;
-			set_player_direction(game, cube->map[y][x]);
-			cube->map[y][x] = '0';
+			set_player_direction(game, game->map[y][x]);
+			game->map[y][x] = '0';
 			return (1);
 		}
 		x++;
@@ -67,14 +67,14 @@ static int	find_player(t_game *game, t_cube *cube, int y)
 	return (0);
 }
 
-void	init_player(t_game *game, t_cube *cube)
+void	init_player(t_game *game)
 {
 	int	y;
 
 	y = 0;
-	while (cube->map[y])
+	while (game->map[y])
 	{
-		if (find_player(game, cube, y))
+		if (find_player(game, y))
 			return ;
 		y++;
 	}

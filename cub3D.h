@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/19 14:32:05 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/28 11:55:02 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,8 @@ void	perform_dda(t_game *game, t_ray *r);
 void	render_column(t_game *game, t_ray *r);
 int		render_frame(void *param);
 int		key_press(int keycode, void *param);
-void	init_player(t_game *game, t_cube *cube);
+// void	init_player(t_game *game, t_cube *cube);
+void	init_player(t_game *game);
 int		init_game(t_game *game, t_cube *cube);
 void	textures(t_game *game);
 int		init_game_data(t_game *game, t_cube **cube, int ac, char **av);
