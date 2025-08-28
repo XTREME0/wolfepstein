@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:50:25 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/19 13:52:56 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/28 10:36:53 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,21 @@ int	load_and_check_textures(t_game *game)
 	return (0);
 }
 
+int	close_window(void *param)
+{
+	t_game	*game;
+
+	game = (t_game *)param;
+	handle_exit1(game);
+	return (0);
+}
+
 int	create_window_and_image(t_game *game)
 {
 	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D");
 	if (!game->win)
 		return (handle_exit1(game), 1);
+	mlx_hook(game->win, 17, 0, close_window, game);
 	game->img.img = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	game->img.addr = mlx_get_data_addr(game->img.img,
 			&game->img.bits_per_pixel, \
