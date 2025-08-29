@@ -38,6 +38,7 @@ long	get_color(char *line)
 	if (l == NULL)
 		return (-1);
 	sections = ft_split(l, ',');
+	free(l);
 	if (sections == NULL)
 		return (-1);
 	if (!sections[0] || !sections[1] || !sections[2] || sections[3])

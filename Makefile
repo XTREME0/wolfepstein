@@ -1,6 +1,6 @@
 
 CC		= cc
-CFLAGS	= -fsanitize=address 
+CFLAGS	= #-fsanitize=address 
 LFLAGS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit
 RM		= @rm -f
 
