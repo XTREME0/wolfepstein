@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:06:47 by motelti           #+#    #+#             */
-/*   Updated: 2025/07/19 14:36:38 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/29 20:45:52 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ static void	init_ray(t_game *game, int x, double *camera_x,
 	*ray_dir_y = game->dir_y + game->plane_y * (*camera_x);
 }
 
-void	draw_vertical_line(t_game *game, int x, int draw_start, int draw_end, int color)
+void	draw_vertical_line(t_game *game, int x, t_render_params draw)
 {
 	int	y;
 
 	y = 0;
-	while (y < draw_start)
+	while (y < draw.draw_start)
 		set_pixel(&game->img, x, y++, game->ceiling_color); // Use ceiling color
-	y = draw_start;
-	while (y < draw_end)
-		set_pixel(&game->img, x, y++, color); // Wall color
+	y = draw.draw_start;
+	while (y < draw.draw_end)
+		set_pixel(&game->img, x, y++, draw.color); // Wall color
 	while (y < WINDOW_HEIGHT)
 		set_pixel(&game->img, x, y++, game->floor_color); // Use floor color
 }

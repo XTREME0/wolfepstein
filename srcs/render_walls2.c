@@ -40,6 +40,6 @@ void	render_column(t_game *game, t_ray *r)
 	init_render_params(game, r, &p);
 	select_texture(game, r, &p);
 	calc_tex_x(game, r, &p);
-	draw_vertical_line(game, r->x, p.draw_start, p.draw_end, p.color);
+	draw_vertical_line(game, r->x, p);
 	draw_textured_line(game, r, &p);
 }
