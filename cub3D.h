@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/29 18:40:29 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/29 20:29:58 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct s_ray
 	double	ray_dir_x;
 	double	ray_dir_y;
 	double	perp_wall_dist;
-} t_ray;
+}	t_ray;
 
 typedef struct s_render_params
 {
@@ -116,7 +116,7 @@ typedef struct s_render_params
 	char	*texture_addr;
 	int		tex_x;
 	int		color;
-} t_render_params;
+}	t_render_params;
 
 // =========================================> ray-castnig
 void	draw_vertical_line(t_game *game, int x, int draw_start, int draw_end, int color);
