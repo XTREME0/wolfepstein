@@ -26,9 +26,9 @@ void	perform_dda(t_game *game, t_ray *r)
 	}
 }
 
-void	init_ray_params(t_game *game, int x, double *camera_x, double *ray_dir_x, double *ray_dir_y)
+void	init_ray_params(t_game *game, int x, t_render_params *p)
 {
-	*camera_x = 2 * x / (double)WINDOW_WIDTH - 1;
-	*ray_dir_x = game->dir_x + game->plane_x * *camera_x;
-	*ray_dir_y = game->dir_y + game->plane_y * *camera_x;
+	p->camera_x = 2 * x / (double)WINDOW_WIDTH - 1;
+	p->ray_dir_x = game->dir_x + game->plane_x * p->camera_x;
+	p->ray_dir_y = game->dir_y + game->plane_y * p->camera_x;
 }
