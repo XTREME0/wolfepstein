@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/28 11:55:02 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/29 18:40:29 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,28 @@
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
-#define KEY_W 13  // keycode for 'W'
-#define KEY_S 1   // keycode for 'S'
-#define KEY_A 0   // keycode for 'A'
-#define KEY_D 2   // keycode for 'D'
-#define KEY_ESC 53 // keycode for 'Escape'
-#define KEY_LEFT 123  // keycode for left arrow
-#define KEY_RIGHT 124 // keycode for right arrow
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
+# define KEY_W 13  // keycode for 'W'
+# define KEY_S 1   // keycode for 'S'
+# define KEY_A 0   // keycode for 'A'
+# define KEY_D 2   // keycode for 'D'
+# define KEY_ESC 53 // keycode for 'Escape'
+# define KEY_LEFT 123  // keycode for left arrow
+# define KEY_RIGHT 124 // keycode for right arrow
 
 typedef struct s_cube
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	// long long	f;
-	// long long	c;
-	unsigned int f;
-	unsigned int c;
-	char	**map;
-	int		x_max;
-	int		y_max;
-} t_cube;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	unsigned int	f;
+	unsigned int	c;
+	char			**map;
+	int				x_max;
+	int				y_max;
+}	t_cube;
 
 typedef struct s_data
 {
@@ -55,7 +53,7 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-} t_data;
+}	t_data;
 
 typedef struct s_game
 {
@@ -87,7 +85,7 @@ typedef struct s_game
 	char		*ea_addr;
 	int			tex_width;
 	int			tex_height;
-} t_game;
+}	t_game;
 
 typedef struct s_ray
 {
@@ -121,16 +119,15 @@ typedef struct s_render_params
 } t_render_params;
 
 // =========================================> ray-castnig
-void draw_vertical_line(t_game *game, int x, int draw_start, int draw_end, int color);
-void init_ray_params(t_game *game, int x, double *camera_x, double *ray_dir_x, double *ray_dir_y);
-void init_ray_map(t_game *game, t_ray *r);
+void	draw_vertical_line(t_game *game, int x, int draw_start, int draw_end, int color);
+void	init_ray_params(t_game *game, int x, double *camera_x, double *ray_dir_x, double *ray_dir_y);
+void	init_ray_map(t_game *game, t_ray *r);
 void	calc_step_and_sidedist(t_game *game, double ray_dir_x, double ray_dir_y, t_ray *r);
-void calc_wall_properties(t_ray *r, int *line_height, int *draw_start, int *draw_end);
+void	calc_wall_properties(t_ray *r, int *line_height, int *draw_start, int *draw_end);
 void	perform_dda(t_game *game, t_ray *r);
 void	render_column(t_game *game, t_ray *r);
 int		render_frame(void *param);
 int		key_press(int keycode, void *param);
-// void	init_player(t_game *game, t_cube *cube);
 void	init_player(t_game *game);
 int		init_game(t_game *game, t_cube *cube);
 void	textures(t_game *game);
