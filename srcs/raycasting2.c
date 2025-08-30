@@ -58,9 +58,9 @@ int	render_frame(void *param)
 	return (0);
 }
 
-void	calc_step_and_sidedist(t_game *game, double r_dx, double r_dy, t_ray *r)
+void	calc_step_and_sidedist(t_game *game,  t_render_params *p, t_ray *r)
 {
-	if (r_dx < 0)
+	if (p->ray_dir_x < 0)
 	{
 		r->step_x = -1;
 		r->side_dist_x = (game->player_x - r->map_x) * r->delta_dist_x;
@@ -70,7 +70,7 @@ void	calc_step_and_sidedist(t_game *game, double r_dx, double r_dy, t_ray *r)
 		r->step_x = 1;
 		r->side_dist_x = (r->map_x + 1.0 - game->player_x) * r->delta_dist_x;
 	}
-	if (r_dy < 0)
+	if (p->ray_dir_y < 0)
 	{
 		r->step_y = -1;
 		r->side_dist_y = (game->player_y - r->map_y) * r->delta_dist_y;

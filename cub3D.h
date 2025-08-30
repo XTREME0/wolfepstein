@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/29 21:43:28 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/30 10:33:39 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,9 @@ typedef struct s_render_params
 
 // =========================================> ray-castnig
 void	draw_vertical_line(t_game *game, int x, t_render_params draw);
-// void	init_ray_params(t_game *game, int x, double *camera_x, double *ray_dir_x, double *ray_dir_y);
-void    init_ray_params(t_game *game, int x, t_render_params *p);
+void	init_ray_params(t_game *game, int x, t_render_params *p);
 void	init_ray_map(t_game *game, t_ray *r);
-void	calc_step_and_sidedist(t_game *game, double ray_dir_x, double ray_dir_y, t_ray *r);
+void	calc_step_and_sidedist(t_game *game,  t_render_params *p, t_ray *r);
 void	calc_wall_properties(t_ray *r, int *line_height, int *draw_start, int *draw_end);
 void	perform_dda(t_game *game, t_ray *r);
 void	render_column(t_game *game, t_ray *r);

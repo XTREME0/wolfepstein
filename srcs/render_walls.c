@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:08:40 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/29 21:43:45 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/30 09:55:17 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_render_params(t_game *game, t_ray *r, t_render_params *p)
 	r->ray_dir_x = p->ray_dir_x;
 	r->ray_dir_y = p->ray_dir_y;
 	init_ray_map(game, r);
-	calc_step_and_sidedist(game, p->ray_dir_x, p->ray_dir_y, r);
+	calc_step_and_sidedist(game, p, r);
 	perform_dda(game, r);
 	calc_wall_properties(r, &p->line_height, &p->draw_start, &p->draw_end);
 }
