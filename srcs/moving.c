@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:29:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/28 12:05:58 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/30 11:05:11 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,6 @@ static void	handle_exit(t_game *game)
 	exit(0);
 }
 
-// static void	handle_move(t_game *game, double move_speed, int dir)
-// {
-// 	double	new_x;
-// 	double	new_y;
-
-// 	new_x = game->player_x + dir * game->dir_x * move_speed;
-// 	new_y = game->player_y + dir * game->dir_y * move_speed;
-// 	if (game->map[(int)new_y][(int)new_x] == '0')
-// 	{
-// 		game->player_x = new_x;
-// 		game->player_y = new_y;
-// 	}
-// }
-
 static void	handle_move(t_game *game, double move_speed, int dir)
 {
 	double	new_x;
@@ -39,28 +25,13 @@ static void	handle_move(t_game *game, double move_speed, int dir)
 
 	new_x = game->player_x + dir * game->dir_x * move_speed;
 	new_y = game->player_y + dir * game->dir_y * move_speed;
-	// Added bounds checking
-	if (new_x >= 0 && new_x < game->map_cols && new_y >= 0 && new_y < game->map_rows &&
-		game->map[(int)new_y][(int)new_x] == '0')
+	if (new_x >= 0 && new_x < game->map_cols && new_y >= 0
+		&& new_y < game->map_rows && game->map[(int)new_y][(int)new_x] == '0')
 	{
 		game->player_x = new_x;
 		game->player_y = new_y;
 	}
 }
-
-// static void	handle_strafe(t_game *game, double move_speed, int dir)
-// {
-// 	double	new_x;
-// 	double	new_y;
-
-// 	new_x = game->player_x + dir * game->plane_x * move_speed;
-// 	new_y = game->player_y + dir * game->plane_y * move_speed;
-// 	if (game->map[(int)new_y][(int)new_x] == '0')
-// 	{
-// 		game->player_x = new_x;
-// 		game->player_y = new_y;
-// 	}
-// }
 
 static void	handle_strafe(t_game *game, double move_speed, int dir)
 {
@@ -69,9 +40,8 @@ static void	handle_strafe(t_game *game, double move_speed, int dir)
 
 	new_x = game->player_x + dir * game->plane_x * move_speed;
 	new_y = game->player_y + dir * game->plane_y * move_speed;
-	// Added bounds checking
-	if (new_x >= 0 && new_x < game->map_cols && new_y >= 0 && new_y < game->map_rows &&
-		game->map[(int)new_y][(int)new_x] == '0')
+	if (new_x >= 0 && new_x < game->map_cols && new_y >= 0
+		&& new_y < game->map_rows && game->map[(int)new_y][(int)new_x] == '0')
 	{
 		game->player_x = new_x;
 		game->player_y = new_y;

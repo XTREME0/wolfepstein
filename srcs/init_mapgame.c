@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:40:16 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/28 11:55:49 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/30 11:03:53 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	init_game(t_game *game, t_cube *cube)
 		return (1);
 	if (!allocate_textures_map(&(int){0}, game, cube))
 		return (0);
-	// init_player(game, cube);
 	init_player(game);
 	return (0);
 }

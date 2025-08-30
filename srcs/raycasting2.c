@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/30 11:02:34 by motelti           #+#    #+#             */
+/*   Updated: 2025/08/30 11:06:55 by motelti          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3D.h"
 
 static void	clear_screen(t_game *game)
@@ -58,7 +70,7 @@ int	render_frame(void *param)
 	return (0);
 }
 
-void	calc_step_and_sidedist(t_game *game,  t_render_params *p, t_ray *r)
+void	calc_step_and_sidedist(t_game *game, t_render_params *p, t_ray *r)
 {
 	if (p->ray_dir_x < 0)
 	{
