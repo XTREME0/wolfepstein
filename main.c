@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:29:46 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/28 10:36:15 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/30 10:52:27 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ void	handle_exit1(t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_game	game = {0};
+	t_game	game;
 	t_cube	*cube;
 
+	ft_memset(&game, 0, sizeof(game));
 	if (init_game_data(&game, &cube, argc, argv))
 		return (1);
 	if (load_and_check_textures(&game))
