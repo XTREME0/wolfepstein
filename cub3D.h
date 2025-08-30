@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/30 10:33:39 by motelti          ###   ########.fr       */
+/*   Updated: 2025/08/30 10:47:12 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ typedef struct s_render_params
 void	draw_vertical_line(t_game *game, int x, t_render_params draw);
 void	init_ray_params(t_game *game, int x, t_render_params *p);
 void	init_ray_map(t_game *game, t_ray *r);
-void	calc_step_and_sidedist(t_game *game,  t_render_params *p, t_ray *r);
-void	calc_wall_properties(t_ray *r, int *line_height, int *draw_start, int *draw_end);
+void	calc_step_and_sidedist(t_game *game, t_render_params *p, t_ray *r);
+void	calc_wall_properties(t_ray *r, t_render_params *p);
 void	perform_dda(t_game *game, t_ray *r);
 void	render_column(t_game *game, t_ray *r);
 int		render_frame(void *param);

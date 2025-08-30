@@ -18,7 +18,7 @@ static void	clear_screen(t_game *game)
 	}
 }
 
-void	calc_wall_properties(t_ray *r, int *l_height, int *d_start, int *d_end)
+void	calc_wall_properties(t_ray *r, t_render_params *p)
 {
 	double	perp_wall_dist;
 
@@ -32,13 +32,13 @@ void	calc_wall_properties(t_ray *r, int *l_height, int *d_start, int *d_end)
 		perp_wall_dist = r->side_dist_y - r->delta_dist_y;
 	}
 	r->perp_wall_dist = perp_wall_dist;
-	*l_height = (int)(WINDOW_HEIGHT / r->perp_wall_dist);
-	*d_start = -(*l_height) / 2 + WINDOW_HEIGHT / 2;
-	if (*d_start < 0)
-		*d_start = 0;
-	*d_end = *l_height / 2 + WINDOW_HEIGHT / 2;
-	if (*d_end >= WINDOW_HEIGHT)
-		*d_end = WINDOW_HEIGHT - 1;
+	p->line_height = (int)(WINDOW_HEIGHT / r->perp_wall_dist);
+	p->draw_start = -(p->line_height) / 2 + WINDOW_HEIGHT / 2;
+	if (p->draw_start < 0)
+		p->draw_start = 0;
+	p->draw_end = p->line_height / 2 + WINDOW_HEIGHT / 2;
+	if (p->draw_end >= WINDOW_HEIGHT)
+		p->draw_end = WINDOW_HEIGHT - 1;
 }
 
 int	render_frame(void *param)
