@@ -93,5 +93,7 @@ t_cube	*validate_file(int fd)
 		ft_putstr_fd("error: Invalid map\n", 2);
 		return (free_cube(cube), NULL);
 	}
+	if (check_texture_size(cube))
+		return (free_cube(cube), NULL);
 	return (cube);
 }

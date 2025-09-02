@@ -57,7 +57,6 @@ int	set_f_c(t_cube *cube, char *line, int *n)
 		if (cube->f != -1)
 			return (1);
 		cube->f = get_color(line);
-		printf("heeeereeee =====> %u\n", cube->f);
 		if (cube->f == -1)
 			return (1);
 		*n = *n - 1;
