@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:50:25 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/28 10:36:53 by motelti          ###   ########.fr       */
+/*   Updated: 2025/09/03 18:35:41 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,17 @@ void	textures(t_game *game)
 	game->tex_width = width;
 	game->tex_height = height;
 	game->no_addr = mlx_get_data_addr(game->no_img, &width, &height, &dummy);
+	if (!game->no_addr)
+		return ;
 	game->so_addr = mlx_get_data_addr(game->so_img, &width, &height, &dummy);
+	if (!game->so_addr)
+		return ;
 	game->we_addr = mlx_get_data_addr(game->we_img, &width, &height, &dummy);
+	if (!game->so_addr)
+		return ;
 	game->ea_addr = mlx_get_data_addr(game->ea_img, &width, &height, &dummy);
+	if (!game->ea_addr)
+		return ;
 }
 
 int	init_game_data(t_game *game, t_cube **cube, int ac, char **av)
