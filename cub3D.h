@@ -130,7 +130,7 @@ int		render_frame(void *param);
 int		key_press(int keycode, void *param);
 void	init_player(t_game *game);
 int		init_game(t_game *game, t_cube *cube);
-void	textures(t_game *game);
+int	textures(t_game *game);
 int		init_game_data(t_game *game, t_cube **cube, int ac, char **av);
 int		load_and_check_textures(t_game *game);
 int		create_window_and_image(t_game *game);
@@ -138,6 +138,7 @@ void	handle_exit1(t_game *game);
 void	set_pixel(t_data *img, int x, int y, int color);
 void	init_render_params(t_game *game, t_ray *r, t_render_params *p);
 void	select_texture(t_game *game, t_ray *r, t_render_params *p);
+int	check_for_errors(t_game *game);
 
 // =========================================> parsing
 void	extension_err(void);

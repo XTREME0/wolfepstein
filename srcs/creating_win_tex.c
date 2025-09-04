@@ -12,7 +12,7 @@
 
 #include "../cub3D.h"
 
-void	textures(t_game *game)
+int	textures(t_game *game)
 {
 	int		width;
 	int		height;
@@ -29,20 +29,23 @@ void	textures(t_game *game)
 			game->we_texture, &width, &height);
 	game->ea_img = mlx_xpm_file_to_image(game->mlx, \
 			game->ea_texture, &width, &height);
+	if (check_for_errors(game))
+		return (1);
 	game->tex_width = width;
 	game->tex_height = height;
 	game->no_addr = mlx_get_data_addr(game->no_img, &width, &height, &dummy);
 	if (!game->no_addr)
-		return ;
+		return (1);
 	game->so_addr = mlx_get_data_addr(game->so_img, &width, &height, &dummy);
 	if (!game->so_addr)
-		return ;
+		return (1);
 	game->we_addr = mlx_get_data_addr(game->we_img, &width, &height, &dummy);
 	if (!game->so_addr)
-		return ;
+		return (1);
 	game->ea_addr = mlx_get_data_addr(game->ea_img, &width, &height, &dummy);
 	if (!game->ea_addr)
-		return ;
+		return (1);
+	return (0);
 }
 
 int	init_game_data(t_game *game, t_cube **cube, int ac, char **av)
@@ -59,10 +62,33 @@ int	init_game_data(t_game *game, t_cube **cube, int ac, char **av)
 	return (0);
 }
 
+int	check_texture_validity(t_game *game)
+{
+	if (!game->no_texture || !game->so_texture || !game->we_texture || !game->ea_texture)
+		return (1);
+	return (0);
+}
+
+int	check_for_errors(t_game *game)
+{
+	if (!game->no_img || !game->so_img || !game->we_img || !game->ea_img)
+		return (1);
+	return (0);
+}
+
 int	load_and_check_textures(t_game *game)
 {
-	textures(game);
-	if (!game->no_img || !game->so_img || !game->we_img || !game->ea_img)
+	if (check_texture_validity(game))
+	{
+		ft_putstr_fd("error: failed to load textures\n", 2);
+		return (handle_exit1(game), 1);
+	}
+	if (textures(game))
+	{
+		ft_putstr_fd("error: failed to load textures\n", 2);
+		return (handle_exit1(game), 1);
+	}
+	if (check_for_errors(game))
 	{
 		ft_putstr_fd("error: failed to load textures\n", 2);
 		return (handle_exit1(game), 1);

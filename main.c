@@ -14,10 +14,14 @@
 
 static void	destroy_textures(t_game *game)
 {
-	free(game->no_texture);
-	free(game->so_texture);
-	free(game->we_texture);
-	free(game->ea_texture);
+	if (game->no_texture)
+		free(game->no_texture);
+	if (game->so_texture)
+		free(game->so_texture);
+	if (game->we_texture)
+		free(game->we_texture);
+	if (game->ea_texture)
+		free(game->ea_texture);
 }
 
 void	handle_exit1(t_game *game)
@@ -25,7 +29,8 @@ void	handle_exit1(t_game *game)
 	int	i;
 
 	i = 0;
-	mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx && game->win)
+		mlx_destroy_window(game->mlx, game->win);
 	if (game->map)
 	{
 		while (i < game->map_rows)
