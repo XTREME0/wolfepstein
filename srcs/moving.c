@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:29:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/30 11:05:11 by motelti          ###   ########.fr       */
+/*   Updated: 2025/09/05 14:09:38 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int	key_press(int keycode, void *param)
 	double	rot_speed;
 
 	game = (t_game *)param;
-	move_speed = 0.5;
-	rot_speed = 0.5;
+	move_speed = 0.05;
+	rot_speed = 0.05;
 	if (keycode == KEY_ESC)
 		handle_exit(game);
 	else if (keycode == KEY_W)

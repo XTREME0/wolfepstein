@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/30 10:47:12 by motelti          ###   ########.fr       */
+/*   Updated: 2025/09/05 13:37:26 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,15 @@ typedef struct s_game
 	char		*ea_addr;
 	int			tex_width;
 	int			tex_height;
+	// ========> testing
+	int         no_tex_width;
+	int			no_tex_height;
+	int			so_tex_width;
+	int			so_tex_height;
+	int			we_tex_width;
+	int			we_tex_height;
+	int			ea_tex_width;
+	int			ea_tex_height;
 }	t_game;
 
 typedef struct s_ray
@@ -116,7 +125,25 @@ typedef struct s_render_params
 	char	*texture_addr;
 	int		tex_x;
 	int		color;
+	// =======> testing 
+	int		tex_width;
+	int		tex_height;
 }	t_render_params;
+
+// =========================================> xpm textures dimension
+
+typedef struct xpm
+{
+	int	no_width;
+	int	no_height;
+	int	so_width;
+	int	so_height;
+	int	we_width;
+	int	we_height;
+	int	ea_width;
+	int ea_height;
+}	t_xpm;
+
 
 // =========================================> ray-castnig
 void	draw_vertical_line(t_game *game, int x, t_render_params draw);
