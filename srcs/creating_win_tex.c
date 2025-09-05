@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:50:25 by motelti           #+#    #+#             */
-/*   Updated: 2025/09/05 15:53:14 by motelti          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:25:47 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	init_texteres_dimensions(t_game *game, t_xpm xpm)
 
 int    textures(t_game *game)
 {
-	// int		dummy;
 	t_xpm	xpm;
 
 	game->no_img = mlx_xpm_file_to_image(game->mlx, game->no_texture, \
