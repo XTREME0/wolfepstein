@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:50:25 by motelti           #+#    #+#             */
-/*   Updated: 2025/09/05 14:05:36 by motelti          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:53:14 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_texteres_dimensions(t_game *game, t_xpm xpm)
 
 int    textures(t_game *game)
 {
-	int		dummy;
+	// int		dummy;
 	t_xpm	xpm;
 
 	game->no_img = mlx_xpm_file_to_image(game->mlx, game->no_texture, \
@@ -59,19 +59,7 @@ int    textures(t_game *game)
 	if (check_for_errors(game))
 		return (1);
 	init_texteres_dimensions(game, xpm);
-	// if (!get_textures_data_addr(game))
-	// 	return (1);
-	game->no_addr = mlx_get_data_addr(game->no_img, &dummy, &dummy, &dummy);
-	if (!game->no_addr)
-		return (1);
-	game->so_addr = mlx_get_data_addr(game->so_img, &dummy, &dummy, &dummy);
-	if (!game->so_addr)
-		return (1);
-	game->we_addr = mlx_get_data_addr(game->we_img, &dummy, &dummy, &dummy);
-	if (!game->we_addr)
-		return (1);
-	game->ea_addr = mlx_get_data_addr(game->ea_img, &dummy, &dummy, &dummy);
-	if (!game->ea_addr)
+	if (get_textures_data_addr(game) == 1)
 		return (1);
 	return (0);
 }
@@ -135,7 +123,7 @@ int	close_window(void *param)
 
 int	create_window_and_image(t_game *game)
 {
-	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D");
+	game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "WOLFEPSTEIN");
 	if (!game->win)
 		return (handle_exit1(game), 1);
 	mlx_hook(game->win, 17, 0, close_window, game);

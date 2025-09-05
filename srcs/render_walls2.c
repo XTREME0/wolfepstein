@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 11:02:58 by motelti           #+#    #+#             */
-/*   Updated: 2025/09/05 15:26:52 by motelti          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:49:39 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	draw_textured_line(t_game *game, t_ray *r, t_render_params *p)
 	double	step;
 	double	tex_pos;
 
-	tex_y = (int)tex_pos & (p->tex_height - 1);
+	// tex_y = (int)tex_pos & (p->tex_height - 1);
+	tex_y = (int)tex_pos % p->tex_height;
+	step = 1.0 * p->tex_height / p->line_height;
 	tex_pos = (p->draw_start - WINDOW_HEIGHT / 2 + p->line_height / 2) * step;
 	y = p->draw_start;
 	while (y < p->draw_end)
