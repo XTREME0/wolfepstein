@@ -45,19 +45,21 @@ CFLAGS := -Wall -Werror -Wextra
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-
+	@ar rcs $(NAME) $(OBJS)
 bonus: $(BOBJS)
 
 %.o : %.c libft.h
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -MMD -c $<
 	ar rcs $(NAME) $@
 
+
 clean :
-	rm -f $(OBJS) $(BOBJS)
+	rm -f $(OBJS) $(BOBJS) $(OBJS:.o=.d)
 
 fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
 
+-include $(OBJS:.o=.d)
 .PHONY : clean

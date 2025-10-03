@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ataai <ataai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:08:40 by motelti           #+#    #+#             */
-/*   Updated: 2025/09/05 14:12:53 by motelti          ###   ########.fr       */
+/*   Updated: 2025/10/03 17:11:04 by ataai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ void	init_render_params(t_game *game, t_ray *r, t_render_params *p)
 static void	not_side_ray(t_game *game, t_render_params *p)
 {
 	if (p->ray_dir_y > 0)
-		{
-			p->texture_img = game->so_img;
-			p->texture_addr = game->so_addr;
-			p->tex_width = game->so_tex_width;
-			p->tex_height = game->so_tex_height;
-		}
-		else
-		{
-			p->texture_img = game->no_img;
-			p->texture_addr = game->no_addr;
-			p->tex_width = game->no_tex_width;
-			p->tex_height = game->no_tex_height;
-		}
+	{
+		p->texture_img = game->so_img;
+		p->texture_addr = game->so_addr;
+		p->tex_width = game->so_tex_width;
+		p->tex_height = game->so_tex_height;
+	}
+	else
+	{
+		p->texture_img = game->no_img;
+		p->texture_addr = game->no_addr;
+		p->tex_width = game->no_tex_width;
+		p->tex_height = game->no_tex_height;
+	}
 }
 
 void	select_texture(t_game *game, t_ray *r, t_render_params *p)

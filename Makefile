@@ -1,38 +1,46 @@
 
 CC		= cc
-CFLAGS	= #-fsanitize=address 
+CFLAGS	= -Wall -Werror -Wextra 
 LFLAGS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit
-RM		= @rm -f
-
 NAME	= cub3D
-HEADER = cub.h
+OSRC		= main.c get_next_line.c get_next_line_utils.c creating_win_tex.c creating_win_tex2.c \
+			init_mapgame.c init_player.c moving.c raycasting.c raycasting2.c raycasting3.c render_walls.c render_walls2.c \
+			color.c cube_init_free.c error.c file_validation.c helpers.c helpers2.c mapcheck.c parse_map.c parsing.c set_options.c
 
-SRC		= srcs/main.c srcs/raycasting.c srcs/moving.c
-		
+OBJ		= $(addprefix objs/, $(OSRC:.c=.o))
+LIB		= libft/libft.a
 
-OBJ		= $(SRC:.c=.o)
+all: $(LIB) $(NAME)
 
-all: $(NAME) clean
+$(NAME): $(LIB) $(OBJ)
+	$(MAKE) -C libft
+	$(CC) $(CFLAGS) $(LFLAGS) $(OBJ) $(LFLAGS) $(LIB) -o $(NAME)
 
-NAME = cub3D
-HEADER = cub.h
+$(LIB):
+	$(MAKE) -C libft
 
-all: $(NAME)
+objs/%.o: %.c $(LIB)
+	mkdir -p objs
+	$(CC) $(CFLAGS)  -MMD -c $< -o $@
 
-bruh:
-	cc $(CFLAGS) $(LFLAGS) libft/libft.a get_next_line/*.c parsing/*.c srcs/*.c main.c -g -o cub3D 
+objs/%.o: get_next_line/%.c $(LIB)
+	mkdir -p objs
+	$(CC) $(CFLAGS) -MMD -c $< -o $@
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@ -MMD
+objs/%.o: srcs/%.c $(LIB)
+	mkdir -p objs
+	$(CC) $(CFLAGS) -MMD -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -o $(NAME)
+objs/%.o: parsing/%.c $(LIB)
+	mkdir -p objs
+	$(CC) $(CFLAGS) -MMD -c $< -o $@
 
 clean:
-	$(RM) $(OBJ) $(OBJ:.o=.d)
+	rm -rf objs
+	$(MAKE) -C libft fclean
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME) 
 
 re: fclean all
 

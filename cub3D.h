@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ataai <ataai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/09/05 13:37:26 by motelti          ###   ########.fr       */
+/*   Updated: 2025/10/03 18:20:41 by ataai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_cube
 	char			*so;
 	char			*we;
 	char			*ea;
-	unsigned int	f;
-	unsigned int	c;
+	int				f;
+	int				c;
 	char			**map;
 	int				x_max;
 	int				y_max;
@@ -86,7 +86,7 @@ typedef struct s_game
 	int			tex_width;
 	int			tex_height;
 	// ========> testing
-	int         no_tex_width;
+	int			no_tex_width;
 	int			no_tex_height;
 	int			so_tex_width;
 	int			so_tex_height;
@@ -141,9 +141,8 @@ typedef struct xpm
 	int	we_width;
 	int	we_height;
 	int	ea_width;
-	int ea_height;
+	int	ea_height;
 }	t_xpm;
-
 
 // =========================================> ray-castnig
 void	draw_vertical_line(t_game *game, int x, t_render_params draw);
@@ -157,7 +156,7 @@ int		render_frame(void *param);
 int		key_press(int keycode, void *param);
 void	init_player(t_game *game);
 int		init_game(t_game *game, t_cube *cube);
-int	textures(t_game *game);
+int		textures(t_game *game);
 int		init_game_data(t_game *game, t_cube **cube, int ac, char **av);
 int		load_and_check_textures(t_game *game);
 int		create_window_and_image(t_game *game);
@@ -165,7 +164,11 @@ void	handle_exit1(t_game *game);
 void	set_pixel(t_data *img, int x, int y, int color);
 void	init_render_params(t_game *game, t_ray *r, t_render_params *p);
 void	select_texture(t_game *game, t_ray *r, t_render_params *p);
-int	check_for_errors(t_game *game);
+int		check_for_errors(t_game *game);
+int		close_window(void *param);
+int		check_texture_validity(t_game *game);
+void	init_texteres_dimensions(t_game *game, t_xpm xpm);
+int		get_textures_data_addr(t_game *game);
 
 // =========================================> parsing
 void	extension_err(void);

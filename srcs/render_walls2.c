@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_walls2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ataai <ataai@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 11:02:58 by motelti           #+#    #+#             */
-/*   Updated: 2025/09/05 15:49:39 by motelti          ###   ########.fr       */
+/*   Updated: 2025/10/03 18:18:40 by ataai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	calc_tex_x(t_game *game, t_ray *r, t_render_params *p)
 {
-	double  wall_x;
+	double	wall_x;
 
 	if (r->side == 0)
 		wall_x = game->player_y + r->perp_wall_dist * r->ray_dir_y;
@@ -35,7 +35,7 @@ void	draw_textured_line(t_game *game, t_ray *r, t_render_params *p)
 	double	step;
 	double	tex_pos;
 
-	// tex_y = (int)tex_pos & (p->tex_height - 1);
+	tex_pos = 0;
 	tex_y = (int)tex_pos % p->tex_height;
 	step = 1.0 * p->tex_height / p->line_height;
 	tex_pos = (p->draw_start - WINDOW_HEIGHT / 2 + p->line_height / 2) * step;
@@ -44,7 +44,8 @@ void	draw_textured_line(t_game *game, t_ray *r, t_render_params *p)
 	{
 		tex_y = (int)tex_pos % p->tex_height;
 		tex_pos += step;
-		p->color = *(unsigned int *)(p->texture_addr + (tex_y * p->tex_width + p->tex_x) * 4);
+		p->color = *(unsigned int *)(p->texture_addr \
+			+ (tex_y * p->tex_width + p->tex_x) * 4);
 		set_pixel(&game->img, r->x, y, p->color);
 		y++;
 	}
