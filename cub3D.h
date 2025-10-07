@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataai <ataai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/10/03 18:20:41 by ataai            ###   ########.fr       */
+/*   Updated: 2025/10/07 12:05:03 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ typedef struct s_game
 	char		*ea_addr;
 	int			tex_width;
 	int			tex_height;
-	// ========> testing
 	int			no_tex_width;
 	int			no_tex_height;
 	int			so_tex_width;
@@ -125,7 +124,6 @@ typedef struct s_render_params
 	char	*texture_addr;
 	int		tex_x;
 	int		color;
-	// =======> testing 
 	int		tex_width;
 	int		tex_height;
 }	t_render_params;
