@@ -33,7 +33,7 @@ static void	handle_move(t_game *game, double move_speed, int dir)
 	}
 }
 
-static void	handle_strafe(t_game *game, double move_speed, int dir)
+static void	handle_left_right(t_game *game, double move_speed, int dir)
 {
 	double	new_x;
 	double	new_y;
@@ -81,9 +81,9 @@ int	key_press(int keycode, void *param)
 	else if (keycode == KEY_S)
 		handle_move(game, move_speed, -1);
 	else if (keycode == KEY_A)
-		handle_strafe(game, move_speed, -1);
+		handle_left_right(game, move_speed, -1);
 	else if (keycode == KEY_D)
-		handle_strafe(game, move_speed, 1);
+		handle_left_right(game, move_speed, 1);
 	else if (keycode == KEY_RIGHT)
 		handle_rotate(game, rot_speed, 1);
 	else if (keycode == KEY_LEFT)
