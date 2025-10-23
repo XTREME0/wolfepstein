@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:29:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/09/05 16:09:55 by motelti          ###   ########.fr       */
+/*   Updated: 2025/10/23 23:26:13 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ static void	handle_rotate(t_game *game, double rot_speed, int dir)
 {
 	double	old_dir_x;
 	double	old_plane_x;
+	double	c;
+	double	s;
 
 	old_dir_x = game->dir_x;
-	game->dir_x = game->dir_x * cos(dir * rot_speed) \
-		- game->dir_y * sin(dir * rot_speed);
-	game->dir_y = old_dir_x * sin(dir * rot_speed) \
-		+ game->dir_y * cos(dir * rot_speed);
 	old_plane_x = game->plane_x;
-	game->plane_x = game->plane_x * cos(dir * rot_speed) \
-		- game->plane_y * sin(dir * rot_speed);
-	game->plane_y = old_plane_x * sin(dir * rot_speed) \
-		+ game->plane_y * cos(dir * rot_speed);
+	c = cos(dir * rot_speed);
+	s = sin(dir * rot_speed);
+	game->dir_x = game->dir_x * c - game->dir_y * s;
+	game->dir_y = old_dir_x * s + game->dir_y * c;
+	game->plane_x = game->plane_x * c - game->plane_y * s;
+	game->plane_y = old_plane_x * s + game->plane_y * c;
 }
 
 int	key_press(int keycode, void *param)
