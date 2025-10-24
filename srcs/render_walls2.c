@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 11:02:58 by motelti           #+#    #+#             */
-/*   Updated: 2025/10/24 01:04:06 by motelti          ###   ########.fr       */
+/*   Updated: 2025/10/24 11:16:17 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ void	calc_tex_x(t_game *game, t_ray *r, t_render_params *p)
 		wall_x = game->player_x + r->wall_dist * r->ray_dir_x;
 	wall_x -= (int)wall_x;
 	p->tex_x = (int)(wall_x * (double)p->tex_width);
-	if (r->side == 0 && p->ray_dir_x > 0)
-		p->tex_x = p->tex_width - p->tex_x - 1;
-	if (r->side != 0 && p->ray_dir_y < 0)
-		p->tex_x = p->tex_width - p->tex_x - 1;
 }
 
 void	draw_textured_line(t_game *game, t_ray *r, t_render_params *p)
