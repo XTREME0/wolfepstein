@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:33:51 by motelti           #+#    #+#             */
-/*   Updated: 2025/10/07 12:05:03 by motelti          ###   ########.fr       */
+/*   Updated: 2025/10/24 01:03:33 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ typedef struct s_ray
 	double	delta_dist_y;
 	double	ray_dir_x;
 	double	ray_dir_y;
-	double	perp_wall_dist;
+	double	wall_dist;
 }	t_ray;
 
 typedef struct s_render_params
@@ -147,7 +147,7 @@ void	draw_vertical_line(t_game *game, int x, t_render_params draw);
 void	init_ray_params(t_game *game, int x, t_render_params *p);
 void	init_ray_map(t_game *game, t_ray *r);
 void	calc_step_and_sidedist(t_game *game, t_render_params *p, t_ray *r);
-void	calc_wall_properties(t_ray *r, t_render_params *p);
+void	calc_wall(t_ray *r, t_render_params *p);
 void	perform_dda(t_game *game, t_ray *r);
 void	render_column(t_game *game, t_ray *r);
 int		render_frame(void *param);

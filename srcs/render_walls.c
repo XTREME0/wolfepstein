@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataai <ataai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:08:40 by motelti           #+#    #+#             */
-/*   Updated: 2025/10/03 17:11:04 by ataai            ###   ########.fr       */
+/*   Updated: 2025/10/24 01:00:46 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_render_params(t_game *game, t_ray *r, t_render_params *p)
 	init_ray_map(game, r);
 	calc_step_and_sidedist(game, p, r);
 	perform_dda(game, r);
-	calc_wall_properties(r, p);
+	calc_wall(r, p);
 }
 
 static void	not_side_ray(t_game *game, t_render_params *p)

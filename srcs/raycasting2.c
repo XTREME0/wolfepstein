@@ -6,7 +6,7 @@
 /*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 11:02:34 by motelti           #+#    #+#             */
-/*   Updated: 2025/08/30 11:06:55 by motelti          ###   ########.fr       */
+/*   Updated: 2025/10/24 01:03:09 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,21 @@ static void	clear_screen(t_game *game)
 	}
 }
 
-void	calc_wall_properties(t_ray *r, t_render_params *p)
+void	calc_wall(t_ray *r, t_render_params *p)
 {
-	double	perp_wall_dist;
+	double	wall_dist;
 
-	perp_wall_dist = 0.0;
+	wall_dist = 0.0;
 	if (r->side == 0)
 	{
-		perp_wall_dist = r->side_dist_x - r->delta_dist_x;
+		wall_dist = r->side_dist_x - r->delta_dist_x;
 	}
 	else
 	{
-		perp_wall_dist = r->side_dist_y - r->delta_dist_y;
+		wall_dist = r->side_dist_y - r->delta_dist_y;
 	}
-	r->perp_wall_dist = perp_wall_dist;
-	p->line_height = (int)(WINDOW_HEIGHT / r->perp_wall_dist);
+	r->wall_dist = wall_dist;
+	p->line_height = (int)(WINDOW_HEIGHT / r->wall_dist);
 	p->draw_start = -(p->line_height) / 2 + WINDOW_HEIGHT / 2;
 	if (p->draw_start < 0)
 		p->draw_start = 0;

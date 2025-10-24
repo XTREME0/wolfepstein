@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_walls2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataai <ataai@student.42.fr>                +#+  +:+       +#+        */
+/*   By: motelti <motelti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 11:02:58 by motelti           #+#    #+#             */
-/*   Updated: 2025/10/03 18:18:40 by ataai            ###   ########.fr       */
+/*   Updated: 2025/10/24 01:04:06 by motelti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	calc_tex_x(t_game *game, t_ray *r, t_render_params *p)
 	double	wall_x;
 
 	if (r->side == 0)
-		wall_x = game->player_y + r->perp_wall_dist * r->ray_dir_y;
+		wall_x = game->player_y + r->wall_dist * r->ray_dir_y;
 	else
-		wall_x = game->player_x + r->perp_wall_dist * r->ray_dir_x;
+		wall_x = game->player_x + r->wall_dist * r->ray_dir_x;
 	wall_x -= (int)wall_x;
 	p->tex_x = (int)(wall_x * (double)p->tex_width);
 	if (r->side == 0 && p->ray_dir_x > 0)
