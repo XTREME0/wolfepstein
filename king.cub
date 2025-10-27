@@ -1,10 +1,10 @@
-SO ./textures/king.xpm
-NO ./textures/king.xpm
-WE ./textures/king.xpm
-EA ./textures/king.xpm
+SO ./textures/epstein.xpm
+NO ./textures/epstein.xpm
+WE ./textures/epstein.xpm
+EA ./textures/epstein.xpm
 
 F 29,48,47
-C 4,218,219
+C 220,220,220
 
 1111111111111111111111111111111111111111
 1000000000000000000000000000000000000001
