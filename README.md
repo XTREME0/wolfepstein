@@ -7,6 +7,9 @@
 [![Made with C](https://img.shields.io/badge/Made%20with-C-blue.svg?style=for-the-badge&logo=c)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![Graphics with MiniLibX](https://img.shields.io/badge/Graphics-MiniLibX-yellow.svg?style=for-the-badge)](https://github.com/42Paris/minilibx-linux)
 
+## Contributors:
+###  [XTREME0](https://github.com/XTREME0) &&  [Triangle](https://github.com/triangle-motelti)
+
 </div>
 
 <div align="center">
