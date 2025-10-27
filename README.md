@@ -85,6 +85,8 @@ To run the game, provide a map file as an argument:
 ./cub3D maps/example_map.cub
 ```
 
+![Alt text](Wolfepstein.gif)
+
 ---
 
 ## Controls
