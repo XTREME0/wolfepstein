@@ -26,6 +26,8 @@
 
 **Wolfepstein** is a 3D graphics project that implements a raycasting engine to render a 3D first-person perspective from a 2D map, similar to the groundbreaking game **Wolfenstein 3D**. This project was built to explore the core principles of 3D graphics, real-time rendering, and low-level engine development.
 
+![Alt text](wolfepstein.png)
+
 ---
 
 ## Key Features
@@ -82,6 +84,8 @@ To run the game, provide a map file as an argument:
 ```sh
 ./cub3D maps/example_map.cub
 ```
+
+![Alt text](Wolfepstein.gif)
 
 ---
 
